@@ -31,11 +31,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        //for zero
         binding.buttonZero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 binding.editText.setText(binding.editText.getText() + "0");
             }
         });
+
+        //for one
+        binding.buttonOne.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                binding.editText.setText(binding.editText.getText() + "1");
+            }
+        });
+
+        //for two
+        binding.buttonTwo.setOnClickListener(new View.OnClickListener(){
+          @Override
+          public void onClick(View view){
+              binding.editText.setText(binding.editText.getText() + "2");
+          }
+        });
+
+        //end numbers
+
     }
 }

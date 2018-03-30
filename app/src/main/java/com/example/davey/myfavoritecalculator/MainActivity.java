@@ -56,6 +56,62 @@ public class MainActivity extends AppCompatActivity {
           }
         });
 
+        //for three
+        binding.buttonThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.editText.setText(binding.editText.getText() + "3");
+            }
+        });
+
+        //for four
+        binding.buttonFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.editText.setText(binding.editText.getText() + "4");
+            }
+        });
+
+        //for five
+        binding.buttonFive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.editText.setText(binding.editText.getText() + "5");
+            }
+        });
+
+        //for six
+        binding.buttonSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.editText.setText(binding.editText.getText() + "6");
+            }
+        });
+
+        //for seven
+        binding.buttonSeven.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.editText.setText(binding.editText.getText() + "7");
+            }
+        });
+
+        //for eight
+        binding.buttonEight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.editText.setText(binding.editText.getText() + "8");
+            }
+        });
+
+        //for nine
+        binding.buttonNine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.editText.setText(binding.editText.getText() + "9");
+            }
+        });
+
         //end numbers
 
     }

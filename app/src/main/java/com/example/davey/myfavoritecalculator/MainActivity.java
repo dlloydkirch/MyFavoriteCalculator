@@ -105,14 +105,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //for nine
-        binding.buttonNine.setOnClickListener(new View.OnClickListener() {
-            @Override
+        binding.buttonNine.setOnClickListener(new View.OnClickListener() { //binding is name in xml file, buttonNine is name in Xml file
+            @Override //because of all the methods I have for the onClick view
             public void onClick(View view) {
-                binding.editText.setText(binding.editText.getText() + "9");
+                binding.editText.setText(binding.editText.getText() + "9"); //need binding.editText.getText() + "9" to keep what was already there
             }
         });
-
         //end numbers
+
+        //for math functions and other buttons
+
+        //end math functions and other buttons
 
     }
 }

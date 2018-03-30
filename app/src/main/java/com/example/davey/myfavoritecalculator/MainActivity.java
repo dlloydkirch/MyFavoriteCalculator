@@ -8,36 +8,24 @@ import android.view.View;
 
 import com.example.davey.myfavoritecalculator.databinding.ActivityMainBinding;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
     //private com.example.davey.myfavoritecalculator.databinding.ActivityMainBinding binding; //had to add davey.myfavor... to get ActivityMainBinding to work
-
-
     private double valueOne = Double.NaN;
     private double valueTwo;
-
     private static final char ADDITION = '+';
     private static final char SUBTRACTION = '-';
     private static final char MULTIPLICATION ='*';
     private static final char DIVISION = '/';
-
     private char CURRENT_ACTION; //next operand
-
     private DecimalFormat decimalFormat;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
         decimalFormat = new DecimalFormat("#.##########");//output that can have 10 places
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
         //for zero
         binding.buttonZero.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 binding.editText.setText(binding.editText.getText() + "0");
             }
         });
+
+        //for number
 
         //for one
         binding.buttonOne.setOnClickListener(new View.OnClickListener()
@@ -130,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //for math functions
         //Addition
         binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
             });
 
         //Multiplication
-
         binding.buttonMultiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -190,13 +178,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Clear
         binding.buttonClear.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 if (binding.editText.getText().length() > 0) {
                     CharSequence currentText = binding.editText.getText();
                     binding.editText.setText(currentText.subSequence(0, currentText.length()-1));
-
                 }
                 else{
                     valueOne = Double.NaN;
@@ -233,7 +221,5 @@ public class MainActivity extends AppCompatActivity {
             }
             catch (Exception e){}
         }
-
-
     }
 }

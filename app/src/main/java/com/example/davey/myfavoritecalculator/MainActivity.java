@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        decimalFormat =  = new DecimalFormat("#.##########");//output that can have 10 places
+        decimalFormat = new DecimalFormat("#.##########");//output that can have 10 places
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 

@@ -200,7 +200,6 @@ public class MainActivity extends AppCompatActivity {
         if (!Double.isNaN(valueOne)) {
             valueTwo = Double.parseDouble(binding.editText.getText().toString());
             binding.editText.setText(null);
-
             if (CURRENT_ACTION == ADDITION) {
                 valueOne = this.valueOne + valueTwo;
             }

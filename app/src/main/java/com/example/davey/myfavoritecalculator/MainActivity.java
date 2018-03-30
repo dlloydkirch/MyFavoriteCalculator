@@ -105,17 +105,117 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //for nine
-        binding.buttonNine.setOnClickListener(new View.OnClickListener() { //binding is name in xml file, buttonNine is name in Xml file
-            @Override //because of all the methods I have for the onClick view
+        binding.buttonNine.setOnClickListener(new View.OnClickListener() { //binding is name in xml file, buttonNine is name in Activity_main.Xml file
+            @Override //because of all the methods I have for the onClick view and the built in to java method
             public void onClick(View view) {
                 binding.editText.setText(binding.editText.getText() + "9"); //need binding.editText.getText() + "9" to keep what was already there
             }
         });
         //end numbers
 
-        //for math functions and other buttons
+        //for other functions
 
-        //end math functions and other buttons
+        //for the decimal point
+        binding.buttonDot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.editText.setText(binding.editText.getText() + ".");
+            }
+        });
+
+        //for math functions
+        //Addition
+        binding.buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                computeCalculation();
+                CURRENT_ACTION = ADDITION;
+                binding.infoTextView.setText(decimalFormat.format(valueOne) + "+");
+                binding.editText.setText(null);
+            }
+        });
+
+        //Subtraction
+        binding.buttonSubtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                computeCalculation();
+                CURRENT_ACTION = SUBTRACTION;
+                binding.infoTextView.setText(decimalFormat.format(valueOne) + "-");
+                binding.editText.setText(null);
+            }
+            });
+
+        //Multiplication
+
+        binding.buttonMultiply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                computeCalculation();
+                CURRENT_ACTION = MULTIPLICATION;
+                binding.infoTextView.setText(decimalFormat.format(valueOne) + "*");
+                binding.editText.setText(null);
+            }
+        });
+
+
+        //Division
+
+        binding.buttonDivide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                computeCalculation();
+                CURRENT_ACTION = DIVISION;
+                binding.infoTextView.setText(decimalFormat.format(valueOne) + "/");
+                binding.editText.setText(null);
+            }
+        });
+
+        //Equal
+
+        binding.buttonEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                computeCalculation();
+
+                binding.infoTextView.setText(binding.infoTextView.getText().toString() +
+                        decimalFormat.format(valueTwo) + " = " +
+                        decimalFormat.format(valueOne));
+                valueOne = Double.NaN;
+                CURRENT_ACTION = '0';
+            }
+        });
+
+    }
+
+
+
+    private void computeCalculation(){
+        if (!Double.isNaN(valueOne)) {
+            valueTwo = Double.parseDouble(binding.editText.getText().toString());
+            binding.editText.setText(null);
+
+            if (CURRENT_ACTION == ADDITION) {
+                valueOne = this.valueOne + valueTwo;
+            }
+            else if (CURRENT_ACTION == SUBTRACTION){
+                valueOne = this.valueOne - valueTwo;
+            }
+            else if (CURRENT_ACTION == MULTIPLICATION){
+                valueOne = this.valueOne * valueTwo;
+            }
+            else if (CURRENT_ACTION == DIVISION){
+                valueOne = this.valueOne / valueTwo;
+            }
+        }
+
+        else{
+            try{
+                valueOne = Double.parseDouble(binding.editText.getText().toString());
+            }
+            catch (Exception e){}
+        }
+
 
     }
 }

@@ -191,9 +191,8 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@id/buttonAdd"
             android:layout_below="@id/buttonAdd"
-
+            android:textColor="@android:color/holo_green_dark"
             android:layout_marginTop = "@dimen/activity_vertical_margin"
-
             android:text="C"
             android:textSize="20sp" />
     </RelativeLayout>

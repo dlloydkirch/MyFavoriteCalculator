@@ -11,7 +11,10 @@ import com.example.davey.myfavoritecalculator.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private com.example.davey.myfavoritecalculator.databinding.ActivityMainBinding binding; //had to add davey.myfavor... to get ActivityMainBinding to work
+    private ActivityMainBinding binding;
+
+    //private com.example.davey.myfavoritecalculator.databinding.ActivityMainBinding binding; //had to add davey.myfavor... to get ActivityMainBinding to work
+
 
     private double valueOne = Double.NaN;
     private double valueTwo;
@@ -23,12 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
     private char CURRENT_ACTION; //next operand
 
-    private DecimalFormat decimalFormat = new DecimalFormat("#.##########");//output that can have 10 places
+    private DecimalFormat decimalFormat;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        decimalFormat =  = new DecimalFormat("#.##########");//output that can have 10 places
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         //for zero
@@ -158,9 +165,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         //Division
-
         binding.buttonDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -172,7 +177,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Equal
-
         binding.buttonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -186,9 +190,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.buttonClear.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                if (binding.editText.getText().length() > 0) {
+                    CharSequence currentText = binding.editText.getText();
+                    binding.editText.setText(currentText.subSequence(0, currentText.length()-1));
+
+                }
+                else{
+                    valueOne = Double.NaN;
+                    valueTwo = Double.NaN;
+                    binding.editText.setText("");
+                    binding.infoTextView.setText("");
+                }
+            }
+        });
     }
-
-
 
     private void computeCalculation(){
         if (!Double.isNaN(valueOne)) {

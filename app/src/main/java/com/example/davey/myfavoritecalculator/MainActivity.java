@@ -8,12 +8,15 @@ import android.view.View;
 
 import com.example.davey.myfavoritecalculator.databinding.ActivityMainBinding;
 
+import static java.lang.Double.NaN;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     //private com.example.davey.myfavoritecalculator.databinding.ActivityMainBinding binding; //had to add davey.myfavor... to get ActivityMainBinding to work
-    private double valueOne = Double.NaN;
+    private double valueOne = NaN;
     private double valueTwo;
+    private double lastValue = 0.0;
     private static final char ADDITION = '+';
     private static final char SUBTRACTION = '-';
     private static final char MULTIPLICATION ='*';
@@ -169,11 +172,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 computeCalculation();
-
                 binding.infoTextView.setText(binding.infoTextView.getText().toString() +
                         decimalFormat.format(valueTwo) + " = " +
                         decimalFormat.format(valueOne));
-                valueOne = Double.NaN;
+                valueOne = NaN;
                 CURRENT_ACTION = '0';
             }
         });
@@ -187,8 +189,8 @@ public class MainActivity extends AppCompatActivity {
                     binding.editText.setText(currentText.subSequence(0, currentText.length()-1));
                 }
                 else{
-                    valueOne = Double.NaN;
-                    valueTwo = Double.NaN;
+                    valueOne = NaN;
+                    valueTwo = NaN;
                     binding.editText.setText("");
                     binding.infoTextView.setText("");
                 }
@@ -197,7 +199,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void computeCalculation(){
-        if (!Double.isNaN(valueOne)) {
+        if (!Double.isNaN(valueOne)){
+//            System.out.println("value one" + valueOne);
+//            System.out.println("value two" + valueTwo);
             valueTwo = Double.parseDouble(binding.editText.getText().toString());
             binding.editText.setText(null);
             if (CURRENT_ACTION == ADDITION) {
@@ -215,6 +219,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         else{
+            valueOne = 0.0;//added to keep calculator from displaying NaN
+            valueTwo = 0.0;//added to keep calculator from displaying NaN
+//            lastValue = 0.0;
             try{
                 valueOne = Double.parseDouble(binding.editText.getText().toString());
             }

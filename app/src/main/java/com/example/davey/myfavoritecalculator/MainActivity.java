@@ -200,8 +200,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void computeCalculation(){
         if (!Double.isNaN(valueOne)){
-//            System.out.println("value one" + valueOne);
-//            System.out.println("value two" + valueTwo);
             valueTwo = Double.parseDouble(binding.editText.getText().toString());
             binding.editText.setText(null);
             if (CURRENT_ACTION == ADDITION) {
@@ -221,11 +219,12 @@ public class MainActivity extends AppCompatActivity {
         else{
             valueOne = 0.0;//added to keep calculator from displaying NaN
             valueTwo = 0.0;//added to keep calculator from displaying NaN
-//            lastValue = 0.0;
+
             try{
                 valueOne = Double.parseDouble(binding.editText.getText().toString());
             }
             catch (Exception e){}
         }
     }
+
 }

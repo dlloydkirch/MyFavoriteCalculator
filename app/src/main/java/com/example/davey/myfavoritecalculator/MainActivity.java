@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         decimalFormat = new DecimalFormat("#.##########");//output that can have 10 places
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
         //for zero
         binding.buttonZero.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -215,16 +216,14 @@ public class MainActivity extends AppCompatActivity {
                 valueOne = this.valueOne / valueTwo;
             }
         }
-
         else{
             valueOne = 0.0;//added to keep calculator from displaying NaN
             valueTwo = 0.0;//added to keep calculator from displaying NaN
-
+            binding.infoTextView.setText("");//use this one to clear the edit text screen after seeing equals
             try{
                 valueOne = Double.parseDouble(binding.editText.getText().toString());
             }
             catch (Exception e){}
         }
     }
-
 }

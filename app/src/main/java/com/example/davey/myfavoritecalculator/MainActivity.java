@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     //private com.example.davey.myfavoritecalculator.databinding.ActivityMainBinding binding; //had to add davey.myfavor... to get ActivityMainBinding to work
     private double valueOne = NaN;
+    private boolean hasDot = false;
     private double valueTwo;
     private double lastValue = 0.0;
     private static final char ADDITION = '+';
@@ -121,7 +122,17 @@ public class MainActivity extends AppCompatActivity {
         binding.buttonDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.editText.setText(binding.editText.getText() + ".");
+                if (hasDot){
+                    binding.infoTextView.setText("ERROR");
+                    binding.editText.setText("");
+                    valueOne = NaN;
+                    valueTwo = NaN;
+                    hasDot = false;
+                }
+                else {
+                    binding.editText.setText(binding.editText.getText() + ".");
+                    hasDot = true;
+                }
             }
         });
 
@@ -179,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
                         decimalFormat.format(valueOne));
                 valueOne = NaN;
                 CURRENT_ACTION = '0';
+                hasDot = false;
             }
         });
 
@@ -195,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
                     valueTwo = NaN;
                     binding.editText.setText("");
                     binding.infoTextView.setText("");
+                    hasDot = false;
                 }
             }
         });
@@ -234,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             valueOne = 0.0;//added to keep calculator from displaying NaN
             valueTwo = 0.0;//added to keep calculator from displaying NaN
+            hasDot = false;
             binding.infoTextView.setText("");//use this one to clear the edit text screen after seeing equals
             try{
                 valueOne = Double.parseDouble(binding.editText.getText().toString());

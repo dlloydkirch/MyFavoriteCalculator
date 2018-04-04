@@ -172,6 +172,18 @@
             android:textSize="20sp" />
 
         <Button
+            android:id="@+id/buttonRoot"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonDot"
+            android:text="sqrt"
+            android:textColor="@android:color/holo_red_dark"
+
+            android:textSize="14sp" />
+
+
+        <Button
             android:id="@+id/buttonMultiply"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"

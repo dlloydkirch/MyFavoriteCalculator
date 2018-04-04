@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static final char SUBTRACTION = '-';
     private static final char MULTIPLICATION ='*';
     private static final char DIVISION = '/';
+    private static final char ROOT = '^';
     private char CURRENT_ACTION; //next operand
     private DecimalFormat decimalFormat;
 
@@ -197,6 +198,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //Root
+        binding.buttonRoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                double valueRoot;
+                valueRoot = Math.sqrt(Double.parseDouble(binding.editText.getText().toString()));
+                binding.infoTextView.setText("sqrt of " + binding.editText.getText().toString() + " = " + valueRoot);
+                binding.editText.setText(null);
+                valueOne = NaN;
+                CURRENT_ACTION = '0';
+
+            }
+        });
     }
 
     public void computeCalculation(){
@@ -226,4 +241,5 @@ public class MainActivity extends AppCompatActivity {
             catch (Exception e){}
         }
     }
+
 }
